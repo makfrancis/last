@@ -1,0 +1,58 @@
+package com.accenture.bars.domain;
+
+import java.sql.Timestamp;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.web.servlet.ModelAndView;
+
+public class Customer {
+	private int customerId;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String status;
+	private Timestamp dateCreated;
+	private String lastEdited;
+	public Customer(int customerId, String firstName, String lastName, String address, String status,
+			String lastEdited) {
+		super();
+		this.customerId = customerId;
+		this.firstName = firstName;
+		lastName = lastName;
+		this.address = address;
+		this.status = status;
+		this.lastEdited = lastEdited;
+	}
+	
+	
+	public Customer(String jsonObject) throws JSONException {
+		JSONObject accountJson = new JSONObject(jsonObject);
+		this.customerId = (int) accountJson.getInt("accountId");
+		this.firstName = (String) accountJson.getString("accountName");
+		this.lastName = (String) accountJson.getString("isActive");
+		this.dateCreated = Timestamp.valueOf(accountJson.getString("dateCreated"));
+		this.lastEdited = (String) accountJson.getString("lastEdited");
+	}
+ 
+	public void addModelAndView(ModelAndView mv) {
+		mv.addObject("accountId", this.accountId);
+		mv.addObject("accountName", this.accountName);
+		mv.addObject("dateCreated", this.dateCreated);
+		mv.addObject("isActive", this.isActive);
+		mv.addObject("lastEdited", this.lastEdited);
+	}
+ 
+	public String toJson() throws JSONException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("accountId", this.accountId);
+		jsonObject.put("accountName", this.accountName);
+		jsonObject.put("dateCreated", this.dateCreated);
+		jsonObject.put("isActive", this.isActive);
+		jsonObject.put("lastEdited", this.lastEdited);
+		return jsonObject.toString();
+	}
+	
+	
+	
+}

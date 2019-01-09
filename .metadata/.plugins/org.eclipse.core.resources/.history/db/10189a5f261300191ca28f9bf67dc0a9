@@ -1,0 +1,5 @@
+package com.accenture.bars.repository;
+
+public interface BillingRepository {
+
+}

@@ -1,0 +1,5 @@
+package com.accenture.bars.domain;
+
+public class Account {
+
+}

@@ -1,0 +1,10 @@
+spring.application.name : bars-server
+#spring.datasource.url : jdbcmysql//localhost\:3306/debuggingbars_db
+#spring.datasource.username : root
+#spring.datasource.password : admin
+spring.datasource.url = jdbc:mysql://localhost:3306/barsdb
+spring.datasource.username = root
+spring.datasource.password = admin
+
+spring.jpa.hibernate.ddl-auto : none
+server.port : 2000
